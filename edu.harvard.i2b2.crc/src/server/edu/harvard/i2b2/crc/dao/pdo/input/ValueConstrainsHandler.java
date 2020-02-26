@@ -92,7 +92,7 @@ public class ValueConstrainsHandler {
 						constrainSql +=  " observation_blob like '%" + containsSql + "%' ";
 					}
 					else if (oracleFlag == true) { 
-						constrainSql +=  " contains(observation_blob,'" + containsSql + "') ";
+						constrainSql +=  " instr(observation_blob,'" + containsSql + "') "; // avoid CONTAINS and the ensuing Oracle text index woes
 						if (panelAccuracyScale>0) {
 							constrainSql += " >= " + panelAccuracyScale + " ";
 						} else { 
